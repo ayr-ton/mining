@@ -25,6 +25,45 @@ Requirements
 * Bower (Install frontend libs, NodeJS depends)
 
 
+Automated install
+-------
+
+First, you need to install `fig <http://www.fig.sh/install.html>`_ before proceed.
+
+**Then, copy the sample ini file to mining.ini**
+
+.. code:: bash
+
+    $ cp mining/mining.sample.ini mining/mining.ini    
+
+At mining.ini, rename "127.0.0.1" at mongodb uri to "admindb" and redis uri from "127.0.0.1" to "datawarehouse".
+
+The host change is necessary to fit the fig links for docker containers.
+
+Run
+---
+
+.. code:: bash
+
+    fig up
+    fig run web python manage.py celery 
+    fig run web python manage.py scheduler
+
+It will create docker containers, then start downloading and compiling all the depenciences. So the first run can last an hour or two depending on your hardware and internet connection. Be patient and go outside to play with your cat.
+
+Running Demo in automated install
+------------
+
+.. code:: bash
+
+    fig run web python manage.py build_demo
+
+
+And now you can login with: username 'admin' and password 'admin'.
+
+Manual install
+-------
+
 Install dependencies
 -------
 
@@ -100,7 +139,7 @@ Run
     python manage.py scheduler
 
 
-Running Demo
+Running Demo in manual install
 ------------
 
 .. code:: bash
