@@ -18,9 +18,8 @@ RUN git submodule update
 RUN ln -sf /usr/bin/nodejs /usr/bin/node
 RUN npm -g install bower
 
-RUN pip install -r requirements.txt
-RUN python setup.py install
-RUN pip install numexpr==2.3
+RUN make environment
+RUN make install
 WORKDIR mining/frontend
 RUN bower install --allow-root
 WORKDIR ../..

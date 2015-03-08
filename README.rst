@@ -26,7 +26,7 @@ Requirements
 
 
 Automated install
--------
+-----------
 
 First, you need to install `fig <http://www.fig.sh/install.html>`_ before proceed.
 
@@ -34,11 +34,7 @@ First, you need to install `fig <http://www.fig.sh/install.html>`_ before procee
 
 .. code:: bash
 
-    $ cp mining/mining.sample.ini mining/mining.ini    
-
-At mining.ini, rename "127.0.0.1" at mongodb uri to "admindb" and redis uri from "127.0.0.1" to "datawarehouse".
-
-The host change is necessary to fit the fig links for docker containers.
+    $ cp mining/mining.sample.fig.ini mining/mining.ini
 
 Run
 ---
@@ -68,13 +64,18 @@ Install dependencies
 -------
 
 .. code:: bash
-    
+
     $ sudo apt-get install mongodb-10gen redis-server nodejs nodejs-dev npm
     $ npm install bower
 
 
 If you use Mac OSX you can install all dependencies using `HomeBrew <http://brew.sh/>`_.
 
+**Then, copy the sample ini file to mining.ini**
+
+.. code:: bash
+
+    $ cp mining/mining.sample.ini mining/mining.ini
 
 Install Open Mining
 -------
@@ -87,29 +88,12 @@ Install Open Mining
     $ cd mining
     $ git submodule update
 
-**Run pip install on project requirements**
+**Run make install on project**
 
 .. code:: bash
 
-    $ pip install -r requirements.txt
-
-**Copy the sample ini file to mining.ini**
-
-.. code:: bash
-
-    $ cp mining/mining.sample.ini mining/mining.ini    
-
-**Install it**
-
-.. code:: bash
-
-    $ python setup.py install
-
-**Install numexpr**
-
-.. code:: bash
-
-    $ pip install numexpr==2.3
+    $ make environment
+    $ make install
 
 **Install javascript assets using Bower**
 
